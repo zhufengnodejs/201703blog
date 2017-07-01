@@ -20,6 +20,23 @@ router.post('/signup',function(req,res){
 router.get('/signin',function(req,res){
   res.render('user/signin',{title:'用户登录'});
 });
+router.post('/signin',function(req,res){
+  let user  = req.body;
+  User.findOne(user,function(err,doc){
+     if(err){
+       res.redirect('back');
+     }else{
+       if(doc){//如果doc有值，则表示查到数据了，如果没有值null则表示没有查找
+         //如果登录成功之后，会把对象放到会话中去
+         //session是跨请求保存数据
+         req.session.user = doc;
+         res.redirect('/');
+       }else{
+         res.redirect('back');
+       }
+     }
+  })
+});
 router.get('/signout',function(req,res){
   res.send('退出');
 });

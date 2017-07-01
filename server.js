@@ -1,6 +1,7 @@
 //加载express模块
 let express = require('express');
 let bodyParser = require('body-parser');
+let session = require('express-session');
 let user = require('./routes/user');
 let category = require('./routes/category');
 let article = require('./routes/article');
@@ -9,7 +10,18 @@ let path = require('path');
 let app = express();
 //引入body-parser中间件后会往请求对象上增加一个body属性
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended:true}));
+//使用会话中间件
+app.use(session({
+  resave:true,//每次请求结束重新保存session
+  saveUninitialized:true,//保存未初始化的session
+  secret:'zfpx'//加密cookie的秘钥
+}));
+app.use(function(req,res,next){
+  // res.locals 是真正渲染模板的数据对象
+ res.locals.user = req.session.user;
+ next();
+});
 //设置模板引擎
 app.set('view engine','html');
 //模板的存放路径

@@ -12,10 +12,15 @@
             <a class="navbar-brand">珠峰博客</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="/user/signup">注册</a></li>
-            <li><a href="/user/signin">登录</a></li>
+            <%
+              if(user){%>
             <li><a href="/category/list">分类管理</a></li>
             <li><a href="/article/add">增加文章</a></li>
+              <%}else{%>
+            <li><a href="/user/signup">注册</a></li>
+            <li><a href="/user/signin">登录</a></li>
+              <%}
+            %>
         </ul>
     </div>
 </nav>
