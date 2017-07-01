@@ -22,6 +22,11 @@
               <%}
             %>
         </ul>
+        <%if(user){%>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href=""><%=user.username%></a></li>
+        </ul>
+        <%}%>
     </div>
 </nav>
 <div class="container">

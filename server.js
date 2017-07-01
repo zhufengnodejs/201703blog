@@ -17,6 +17,12 @@ app.use(session({
   saveUninitialized:true,//保存未初始化的session
   secret:'zfpx'//加密cookie的秘钥
 }));
+/**
+ * ？ 如何控制页面上的菜单显示
+ * 1. 当登录成功之后，会把查询到的当前用户对象保存到会话对象中 req.session
+ * 2. 在渲染其它页面时，先把会话对象(req.session)中的user属性取出来赋给了res.locals(真正渲染模板的数据对象).
+ * .在模板里就可以通过user有没有值来控制 菜单的显示 。
+ */
 app.use(function(req,res,next){
   // res.locals 是真正渲染模板的数据对象
  res.locals.user = req.session.user;
