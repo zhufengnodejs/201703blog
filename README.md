@@ -37,11 +37,11 @@ npm install express body-parser bootstrap connect-flash connect-mongo debug ejs 
 ```
 /category/list 分类列表
 /category/add 增加分类
-/category/delete 删除分类
+/category/delete/:id 删除分类
 ```
 ### 文章路由
 ```
 /article/add 增加文章
-/article/delete 删除文章
+/article/delete/:id 删除文章
 ```
 
