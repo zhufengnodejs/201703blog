@@ -12,6 +12,8 @@ app.set('view engine','html');
 app.set('views',path.resolve('views'));
 //设置如果模板是html的话，使用ejs引擎的渲染方法来进行渲染
 app.engine('html',require('ejs').__express);
+//把项目根目录下面的node_modules作为静态文件根目录
+app.use(express.static('node_modules'));
 //中间件第一个参数是路径的前缀，
 app.use('/user',user);
 //如果访问的路径是以/category开头的
