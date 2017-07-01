@@ -38,7 +38,8 @@ router.post('/signin',function(req,res){
   })
 });
 router.get('/signout',function(req,res){
-  res.send('退出');
+  req.session.user = null;
+  res.redirect('/user/signin');
 });
 //一定要先行导出此路由中间件
 module.exports = router;
