@@ -27,5 +27,21 @@ npm install express body-parser bootstrap connect-flash connect-mongo debug ejs 
 - 评论文章
 
 ##　实现路由
-
+### 用户路由
+```
+/user/signup 注册
+/user/signin 登录
+/user/signout 退出
+```
+### 文章分类路由
+```
+/category/list 分类列表
+/category/add 增加分类
+/category/delete 删除分类
+```
+### 文章路由
+```
+/article/add 增加文章
+/article/delete 删除文章
+```
 
