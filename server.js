@@ -1,11 +1,15 @@
 //加载express模块
 let express = require('express');
+let bodyParser = require('body-parser');
 let user = require('./routes/user');
 let category = require('./routes/category');
 let article = require('./routes/article');
 let path = require('path');
 //调用此方法返回app实例 app其实是一个
 let app = express();
+//引入body-parser中间件后会往请求对象上增加一个body属性
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 //设置模板引擎
 app.set('view engine','html');
 //模板的存放路径

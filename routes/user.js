@@ -6,6 +6,10 @@ router.get('/signup',function(req,res){
   //渲染views目录下面的signup模板
   res.render('user/signup',{title:'用户注册'});
 });
+router.post('/signup',function(req,res){
+  let user = req.body;
+
+});
 router.get('/signin',function(req,res){
   res.send('用户登录');
 });
