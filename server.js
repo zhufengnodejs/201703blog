@@ -2,6 +2,7 @@
 let express = require('express');
 let bodyParser = require('body-parser');
 let session = require('express-session');
+let MongoStore = require('connect-mongo')(session);
 let user = require('./routes/user');
 let category = require('./routes/category');
 let article = require('./routes/article');
@@ -16,7 +17,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(session({
   resave:true,//每次请求结束重新保存session
   saveUninitialized:true,//保存未初始化的session
-  secret:'zfpx'//加密cookie的秘钥
+  secret:'zfpx',//加密cookie的秘钥
+  //指定session数据的存放位置，可能是内存、文件系统、数据库
+  store:new MongoStore({url:'mongodb://127.0.0.1/201703blog'})
 }));
 /**
  * ？ 如何控制页面上的菜单显示
