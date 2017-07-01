@@ -45,4 +45,24 @@ npm install express body-parser bootstrap connect-flash connect-mongo debug ejs 
 /article/delete/:id 删除文章
 ```
 
-##
+## 数据库结构
+### 用户集合
+|字段名称|字段名|字段类型|
+|:----|:----|:----|
+|用户名|username|字符串|
+|密码|password|字符串|
+|邮箱|email|字符串|
+|头像|avatar|字符串|
+
+### 文章分类集合
+|字段名称|字段名|字段类型|
+|:----|:----|:----|
+|分类名称|name|字符串|
+
+### 文章集合
+|字段名称|字段名|字段类型|
+|:----|:----|:----|
+|文章标题|title|字符串|
+|文章内容|content|字符串|
+|作者|author|ID类型|
+|发表时间|createAt|日期|
