@@ -5,6 +5,7 @@ let session = require('express-session');
 let user = require('./routes/user');
 let category = require('./routes/category');
 let article = require('./routes/article');
+let index = require('./routes/index');
 let path = require('path');
 //调用此方法返回app实例 app其实是一个
 let app = express();
@@ -36,6 +37,9 @@ app.set('views',path.resolve('views'));
 app.engine('html',require('ejs').__express);
 //把项目根目录下面的node_modules作为静态文件根目录
 app.use(express.static('node_modules'));
+//index是一个中间件函数，当服务器收到客户端的请求的时候，会判断前缀，如果前缀匹配，会将将由交给此中间件函数来处理
+
+app.use('/',index);
 //中间件第一个参数是路径的前缀，
 app.use('/user',user);
 //如果访问的路径是以/category开头的
