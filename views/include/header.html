@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <title><%=title%></title>
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .avatar{
+            width:25px;
+            height:25px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -25,7 +32,10 @@
         </ul>
         <%if(user){%>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href=""><%=user.username%></a></li>
+            <li><a href="">
+                <img class="avatar" src="<%=user.avatar%>" alt="<%=user.username%>">
+                <%=user.username%>
+            </a></li>
         </ul>
         <%}%>
     </div>
