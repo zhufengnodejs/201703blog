@@ -1,5 +1,6 @@
 //1.引入mongoose
 let mongoose = require('mongoose');
+let ObjectId = mongoose.Schema.Types.ObjectId;
 //2.连接数据库
 //conn是连接对象
 let conn = mongoose.createConnection('mongodb://127.0.0.1/201703blog');
@@ -15,4 +16,12 @@ exports.User = conn.model('User', new mongoose.Schema({
 
 exports.Category = conn.model('Category',new mongoose.Schema({
   name:String // 分类名称 类型是字符串
+}));
+
+exports.Article = conn.model('Article',new mongoose.Schema({
+  title:String,//标题
+  content:{type:String},//内容正文
+  //外键 别的集合的主键 ref-reference引用
+  author:{type:ObjectId,ref:'User'},
+  createAt:{type:Date,default:Date.now}
 }));
