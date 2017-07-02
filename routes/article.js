@@ -1,11 +1,13 @@
 let express = require('express');
+let {checkLogin} = require('../authware');
 let {Article} = require('../model');
 let router = express.Router();
-router.get('/add', function (req, res) {
-  res.render('article/add', {title: '增加文章'});
+router.get('/add',checkLogin, function (req, res) {
+  res.render('article/add', {title: '增加文章2'});
 });
-router.post('/add', function (req, res) {
+router.post('/add',checkLogin, function (req, res) {
   let article = req.body;
+  article.author = req.session.user._id;
   Article.create(article,function(err,doc){
      if(err){
        res.back(err);
