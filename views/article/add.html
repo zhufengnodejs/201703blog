@@ -11,7 +11,7 @@
                         <select class="form-control" name="category" id="category">
                             <%
                               categories.forEach(function(category){%>
-                            <option <%=category._id.toString()==article.category.toString()?'selected':''%>  value="<%=category._id%>"><%=category.name%></option>
+                            <option <%=article.category&&category._id.toString()==article.category.toString()?'selected':''%>  value="<%=category._id%>"><%=category.name%></option>
                               <%})
                             %>
                         </select>

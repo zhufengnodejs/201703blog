@@ -4,7 +4,7 @@ let {Article, Category} = require('../model');
 let router = express.Router();
 router.get('/add', checkLogin, function (req, res) {
   Category.find({}, function (err, categories) {
-    res.render('article/add', {title: '增加文章', categories});
+    res.render('article/add', {title: '增加文章', categories,article:{}});
   });
 });
 router.post('/add', checkLogin, function (req, res) {
