@@ -1,6 +1,7 @@
 //1.引入mongoose
 let mongoose = require('mongoose');
 //2.连接数据库
+//conn是连接对象
 let conn = mongoose.createConnection('mongodb://127.0.0.1/201703blog');
 //3.定义schema
 //4.定义model

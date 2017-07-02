@@ -1,7 +1,7 @@
 <%include ../include/header.html%>
 <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form method="post" class="form-horizontal">
+            <form enctype="multipart/form-data" method="post" class="form-horizontal">
                <div class="form-group row">
                    <label for="username" class="control-label col-md-2">用户名</label>
                    <div class="col-md-10 input-group">
@@ -27,6 +27,15 @@
                            <i class="glyphicon glyphicon-envelope"></i>
                        </span>
                         <input type="email" id="email" class="form-control" required name="email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="username" class="control-label col-md-2">头像</label>
+                    <div class="col-md-10 input-group">
+                       <span class="input-group-addon">
+                           <i class="glyphicon glyphicon-upload"></i>
+                       </span>
+                        <input type="file" id="avatar" class="form-control" required name="avatar">
                     </div>
                 </div>
                 <div class="form-group row">
