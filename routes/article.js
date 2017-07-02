@@ -50,7 +50,7 @@ router.post('/update/:id',function(req,res){
   Article.update({_id},article,function(err,result){
     if(err)
       return res.back(err);
-    res.success('更新文章成功111',`/article/detail/${_id}`);
+    res.success('更新文章成功22',`/article/detail/${_id}`);
   });
 });
 module.exports = router;
