@@ -1,5 +1,7 @@
 //1.引入mongoose
 let mongoose = require('mongoose');
+//使用es6原生的Promise库替代掉mongoose使用的Promise库
+mongoose.Promise = Promise;
 let ObjectId = mongoose.Schema.Types.ObjectId;
 //2.连接数据库
 //conn是连接对象
