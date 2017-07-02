@@ -33,11 +33,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <%if(success){%>
             <div class="alert alert-success text-center">
                 <%=success%>
             </div>
+            <%}%>
+            <%if(error){%>
             <div class="alert alert-danger text-center">
                 <%=error%>
             </div>
+            <%}%>
         </div>
     </div>

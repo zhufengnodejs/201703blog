@@ -10,13 +10,26 @@ router.get('/signup',checkNotLogin,function(req,res){
 });
 router.post('/signup',checkNotLogin,function(req,res){
   let user = req.body;
-  User.create(user,function(err,doc){
+  User.findOne({username:user.username},function(err,oldUser){
     if(err){
+      req.flash('error',err);
       res.redirect('back');
     }else{
-      res.redirect('/user/signin');
+      if(oldUser){
+        req.flash('error','这个用户名已经有人用了，你换个用户名吧');
+        res.redirect('back');
+      }else{
+        User.create(user,function(err,doc){
+          if(err){
+            res.redirect('back');
+          }else{
+            res.redirect('/user/signin');
+          }
+        });
+      }
     }
-  });
+  })
+
 });
 router.get('/signin',checkNotLogin,function(req,res){
   res.render('user/signin',{title:'用户登录'});
