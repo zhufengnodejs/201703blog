@@ -19,7 +19,14 @@ router.post('/add', checkLogin, function (req, res) {
   });
 });
 router.get('/delete/:id', function (req, res) {
-  res.send('删除文章');
+  let _id = req.params.id;
+  Article.remove({_id},function(err,result){
+    if(err){
+      res.back(err.toString());
+    }else{
+      res.success('删除文章成功','/');
+    }
+  })
 });
 router.get('/detail/:id', function (req, res) {
   let id = req.params.id;
