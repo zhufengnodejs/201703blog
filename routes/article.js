@@ -34,4 +34,14 @@ router.get('/detail/:id', function (req, res) {
     res.render('article/detail',{title:'文章详情',article})
   });
 });
+router.get('/update/:id',function(req,res){
+  let id = req.params.id;
+  Category.find({},function(err,categories){
+    Article.findById(id,function(err,article){
+      if (err)
+        return res.back(err)
+      res.render('article/add',{title:'更新文章',article,categories});
+    })
+  });
+});
 module.exports = router;
