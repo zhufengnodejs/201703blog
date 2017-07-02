@@ -29,7 +29,14 @@ router.post('/add',function(req,res){
     }
   })
 });
-router.get('/delete/:id',function(req,res){
-  res.send('删除分类');
+router.get('/delete/:_id',function(req,res){
+  let _id = req.params._id;
+  Category.remove({_id},function(err,result){
+    if(err){
+      res.back(err);
+    }else{
+      res.success(`删除${_id}分类成功`,'/category/list');
+    }
+  });
 });
 module.exports = router;
