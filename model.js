@@ -12,3 +12,7 @@ exports.User = conn.model('User', new mongoose.Schema({
   email: String,//邮箱
   avatar: String//头像
 }));
+
+exports.Category = conn.model('Category',new mongoose.Schema({
+  name:String // 分类名称 类型是字符串
+}));

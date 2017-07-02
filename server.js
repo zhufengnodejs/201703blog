@@ -41,6 +41,20 @@ app.use(function(req,res,next){
  res.locals.error = req.flash('error').toString();
  next();
 });
+app.use(function(req,res,next){
+  res.success = function(msg,url){
+    req.flash('success',msg);
+    res.redirect(url);
+  }
+  res.error = function(err,url){
+    req.flash('error',err);
+    res.redirect(url);
+  }
+  res.back = function(err){
+    res.error(err,'back');
+  }
+  next();
+});
 //设置模板引擎
 app.set('view engine','html');
 //模板的存放路径
