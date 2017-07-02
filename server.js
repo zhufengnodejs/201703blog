@@ -3,6 +3,8 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let session = require('express-session');
 let MongoStore = require('connect-mongo')(session);
+//flash 闪电 一闪而过
+let flash = require('connect-flash');
 let user = require('./routes/user');
 let category = require('./routes/category');
 let article = require('./routes/article');
@@ -21,6 +23,11 @@ app.use(session({
   //指定session数据的存放位置，可能是内存、文件系统、数据库
   store:new MongoStore({url:'mongodb://127.0.0.1/201703blog'})
 }));
+//所有的中间件都是一个函数，所以都需要执行一下再放到use里
+app.use(flash());
+//使用此中间件之后 req.flash();
+// req.flash(type,msg) 二个参数写入一条消息
+// req.flash(type) 一个参数表示读取一条消息
 /**
  * ？ 如何控制页面上的菜单显示
  * 1. 当登录成功之后，会把查询到的当前用户对象保存到会话对象中 req.session
@@ -30,6 +37,8 @@ app.use(session({
 app.use(function(req,res,next){
   // res.locals 是真正渲染模板的数据对象
  res.locals.user = req.session.user;
+ res.locals.success = req.flash('success').toString();
+ res.locals.error = req.flash('error').toString();
  next();
 });
 //设置模板引擎
