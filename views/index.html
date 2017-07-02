@@ -2,20 +2,22 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <%articles.forEach(function(article){%>
-            <div class="media">
-                <div class="media-left">
-                    <a href="">
-                        <img class="media-object avatar" src="<%=article.author&&article.author.avatar%>" alt="">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        <%=article.title%>
-                    </h4>
-                    <p><%=article.content%></p>
-                    <p>作者:<%=article.author&&article.author.username%>|发表时间:<%=article.createAt.toLocaleString()%></p>
-                </div>
+        <div class="media">
+            <div class="media-left">
+                <a href="">
+                    <img class="media-object avatar" src="<%=article.author&&article.author.avatar%>" alt="">
+                </a>
             </div>
+            <div class="media-body">
+                <h4 class="media-heading">
+                    <a href="/article/detail/<%=article._id%>">
+                        <%=article.title%>
+                    </a>
+                </h4>
+                <p><%=article.content%></p>
+                <p>作者:<%=article.author&&article.author.username%>|发表时间:<%=article.createAt.toLocaleString()%></p>
+            </div>
+        </div>
         <%})%>
     </div>
 </div>
