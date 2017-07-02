@@ -44,4 +44,13 @@ router.get('/update/:id',function(req,res){
     })
   });
 });
+router.post('/update/:id',function(req,res){
+  let article = req.body;
+  let _id = req.params.id;
+  Article.update({_id},article,function(err,result){
+    if(err)
+      return res.back(err);
+    res.success('更新文章成功',`/article/detail/${_id}`);
+  });
+});
 module.exports = router;

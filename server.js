@@ -51,7 +51,7 @@ app.use(function(req,res,next){
     res.redirect(url);
   }
   res.back = function(err){
-    res.error(err,'back');
+    res.error(err.toString(),'back');
   }
   next();
 });
