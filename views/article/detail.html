@@ -1,8 +1,18 @@
 <%include ../include/header.html%>
 <div class="row">
         <div class="col-md-6 col-md-offset-3">
+            分类名称: <%=article.category.name%>
             <div class="panel panel-default">
-
+                <div class="panel-heading">
+                    <h3><%=article.title%></h3>
+                </div>
+                <div class="panel-body">
+                    <%=article.content%>
+                </div>
+                <div class="panel-footer">
+                    <a class="btn btn-warning">修改</a>
+                    <a class="btn btn-danger">删除</a>
+                </div>
             </div>
         </div>
     </div>

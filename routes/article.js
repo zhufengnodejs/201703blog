@@ -24,7 +24,7 @@ router.get('/delete/:id', function (req, res) {
 router.get('/detail/:id', function (req, res) {
   let id = req.params.id;
   Article.findById(id).populate('category').exec(function (err, article) {
-    res.render('article/detail',{title:'文章详情'})
+    res.render('article/detail',{title:'文章详情',article})
   });
 });
 module.exports = router;
