@@ -1,9 +1,11 @@
 let express = require('express');
 let {checkLogin} = require('../authware');
-let {Article} = require('../model');
+let {Article,Category} = require('../model');
 let router = express.Router();
 router.get('/add',checkLogin, function (req, res) {
-  res.render('article/add', {title: '增加文章2'});
+  Category.find({},function(err,categories){
+    res.render('article/add', {title: '增加文章',categories});
+  });
 });
 router.post('/add',checkLogin, function (req, res) {
   let article = req.body;

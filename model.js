@@ -25,5 +25,6 @@ exports.Article = conn.model('Article',new mongoose.Schema({
   content:{type:String},//内容正文
   //外键 别的集合的主键 ref-reference引用
   author:{type:ObjectId,ref:'User'},
+  category:{type:ObjectId,ref:'Category'},
   createAt:{type:Date,default:Date.now}
 }));
