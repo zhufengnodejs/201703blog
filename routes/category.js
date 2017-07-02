@@ -1,7 +1,7 @@
 let express = require('express');
 let router = express.Router();
 router.get('/list',function(req,res){
-  res.send('分类列表');
+  res.render('category/list',{title:'分类管理'});
 });
 router.get('/add',function(req,res){
   res.send('添加分类');
