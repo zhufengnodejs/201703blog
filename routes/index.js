@@ -13,7 +13,7 @@ router.get('/',function(req,res){
   }
   //count获取指定条件的记录总数
   Article.count(query,function(err,count){
-    Article.find(query).skip((pageNum-1)*pageSize).limit(pageSize).populate('author').exec(function(err,articles){
+    Article.find(query).sort({createAt:-1}).skip((pageNum-1)*pageSize).limit(pageSize).populate('author').exec(function(err,articles){
       res.render('index',{
         title:'首页',
         keyword,
