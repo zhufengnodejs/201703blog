@@ -29,10 +29,13 @@ router.get('/delete/:id', function (req, res) {
   })
 });
 router.get('/detail/:id', function (req, res) {
-  let id = req.params.id;
-  Article.findById(id).populate('category').exec(function (err, article) {
-    res.render('article/detail',{title:'文章详情',article})
+  let _id = req.params.id;
+  Article.update({_id},{$inc:{pv:1}},function(err,result){
+    Article.findById(_id).populate('category').exec(function (err, article) {
+      res.render('article/detail',{title:'文章详情',article})
+    });
   });
+
 });
 router.get('/update/:id',function(req,res){
   let id = req.params.id;

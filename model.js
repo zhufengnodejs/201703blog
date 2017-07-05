@@ -26,5 +26,6 @@ exports.Article = conn.model('Article',new mongoose.Schema({
   //外键 别的集合的主键 ref-reference引用
   author:{type:ObjectId,ref:'User'},
   category:{type:ObjectId,ref:'Category'},
+  pv:{type:Number,default:0},
   createAt:{type:Date,default:Date.now}//now不要加小括号，否则就变成一个永远固定的值了
 }));
